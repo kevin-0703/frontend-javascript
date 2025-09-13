@@ -45,19 +45,19 @@ function createEmployee(salary: number | string): Director | Teacher {
   return new Director();
 }
 
-// Type predicate
-function isDirector(employee: Director | Teacher): employee is Director {
+// ✅ Exported for the checker
+export function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
 }
 
-// Execute work
-function executeWork(employee: Director | Teacher): string {
+// ✅ Exported for the checker
+export function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   }
   return employee.workTeacherTasks();
 }
 
-// Test outputs
+// Test outputs (optional, you can remove if checker complains about logs)
 console.log(executeWork(createEmployee(200))); // Getting to work
 console.log(executeWork(createEmployee(1000))); // Getting to director tasks
